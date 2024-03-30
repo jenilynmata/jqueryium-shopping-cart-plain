@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-    <script src="js/application.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="title">Shopping Cart</h1>
-      <div class="row">
-        <div class="col-12">
-          <table class="table table-responsive">
-            <tbody>
-              <tr>
-                <td class="name">Coddle Aria Fabric Sleeper Sofa with Reversible Chaise</td>
-                <td class="name">iPad Pro 12.9inch, Wi-Fi (6th generation)</td>
-                
-              </tr>
-              <tr>
-                <td class="price">$899.99</td>
-                <td class="price">$999.99</td>
-              </tr>
-              <tr>
-                <td class="qty">QTY </td>
-                  <input class="qty" name="qty" type="number" placeholder="$" required/>
-                <td class="qty">QTY </td>
-                  <input class="qty" name="qty" type="number" placeholder="$" required/>
-              </tr>
-              <tr>
-                <td><button class="btn btn-light btn-sm remove">remove</button></td>
-                <td><button class="btn btn-light btn-sm remove">remove</button></td>
-              </tr>
-              <tr>
-                <td class="totalPrice">$-.--</td>
-                <td class="totalPrice">$-.--</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="js/application.js"></script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Shopping Cart</h1>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="name">Item Name</th>
+              <th class="price">Price</th>
+              <th class="qty">QTY</th>
+              <th class="remove">Remove?</th>
+              <th class="totalPrice">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">Coddle Aria Fabric Sleeper Sofa with Reversible Chaise</td>
+              <td class="price">899.99</td>
+              <td><input class="qty" name="qty" type="number" min="0" required /></td>
+              <td><button class="btn btn-light btn-sm remove">remove</button></td>
+              <td class="totalPrice">$-.--</td>
+            </tr>
+            <tr>
+              <td class="name">iPad Pro 12.9inch, Wi-Fi (6th generation)</td>
+              <td class="price">999.99</td>
+              <td><input class="qty" name="qty" type="number" min="0" required /></td>
+              <td><button class="btn btn-light btn-sm remove">remove</button></td>
+              <td class="totalPrice">$-.--</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form class="col-12 mt-2 mb-4" id="addItem">
+        <input class="mx-2" name="name" type="text" placeholder="Item Name" required/>
+        <input class="mx-2" name="price" type="number" placeholder="$0.00"/>
+        <input class="mx-2" name="qty" type="number" min="0" placeholder="0"/>
+        <button class="btn btn-primary btn-sm">add</button>
+      </form>
+      <div class="w-100">
+        <h3>Total: $<span id="total"></span></h3>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
