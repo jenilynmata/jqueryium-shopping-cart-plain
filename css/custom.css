@@ -1,0 +1,11 @@
+.title {
+    font-weight: bold;
+}
+
+.price {
+    text-align: left;
+}
+
+.totalPrice {
+    text-align: right;
+}
