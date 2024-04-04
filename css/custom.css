@@ -1,11 +1,18 @@
 .title {
     font-weight: bold;
 }
-
+.totalPrice {
+    text-align: right;
+}
 .price {
     text-align: left;
 }
 
-.totalPrice {
-    text-align: right;
+.total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+tbody tr:nth-child(odd) {
+    background: #eee;
 }

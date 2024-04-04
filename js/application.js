@@ -1,25 +1,39 @@
+var formatPrice = function(price) {
+    return parseFloat(price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+var formatAmount = function(amount) {
+    return parseFloat(amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var updateSubtotal = function (ele) {
-    var itemPrice = parseFloat($(ele).find('.price').text());
+    var itemPriceString = $(ele).find('.price').text();
+    var itemPrice = parseFloat(itemPriceString.replace(/\$|,/g, ''));
     var itemQty = parseFloat($(ele).find('.qty').val());
 
     var itemSubtotal = itemPrice * itemQty;
-    $(ele).children('.totalPrice').html(itemSubtotal.toFixed(2));
+
+    var formattedItemPrice = formatPrice(itemPrice);
+
+    $(ele).find('.price').text(formattedItemPrice);
+    $(ele).children('.totalPrice').html(formatPrice(itemSubtotal));
 
     return itemSubtotal;
 }
 
-var sum = function (acc, x) { return acc + x; };
-
 var updateTotal = function () {
-    var subtotal = [];
+    var total = 0;
 
     $('tbody tr').each(function (i, ele) {
         var itemSubtotal = updateSubtotal(ele);
-        subtotal.push(itemSubtotal);
+        total += itemSubtotal;
     });
 
-    var total = subtotal.reduce(sum);
-    $('#total').html(total.toFixed(2));
+    if ($('tbody tr').length === 0) {
+        $('#total').html("0.00");
+    } else {
+        $('#total').html(formatAmount(total));
+    }
 }
 
 $(document).ready(function () {
@@ -44,6 +58,8 @@ $(document).ready(function () {
         var price = $(this).children('[name=price]').val();
         var qty = $(this).children('[name=qty]').val();
         
+        price = formatPrice(price);
+
         $('tbody').append('<tr>' +
         '<td class="name">' + name + '</td>' + 
         '<td class="price">' + price + '</td>' + 
